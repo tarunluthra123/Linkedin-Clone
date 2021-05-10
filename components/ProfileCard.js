@@ -2,7 +2,7 @@ import React from "react";
 
 const ProfileCard = () => {
     return (
-        <div className="flex flex-col relative w-64 ml-1 rounded-md overflow-hidden border-2 border-solid border-gray-200">
+        <div className="flex-shrink-0 flex flex-col relative w-64 ml-1 rounded-md overflow-hidden border-2 border-solid border-gray-200 profile-card">
             <div className="h-12 bg-grayblue"></div>
             <img
                 src="/jackjack.jpeg"

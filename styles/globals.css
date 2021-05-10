@@ -19,3 +19,7 @@ a {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.profile-card {
+    min-width: 16 rem;
+}

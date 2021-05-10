@@ -24,6 +24,9 @@ module.exports = {
             inset: {
                 auto: "auto",
             },
+            width: {
+                "30rem": "37rem",
+            },
         },
     },
     variants: {
