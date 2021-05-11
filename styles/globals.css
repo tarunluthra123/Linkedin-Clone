@@ -23,3 +23,9 @@ a {
 .profile-card {
     min-width: 16 rem;
 }
+
+@layer base {
+    body {
+        @apply bg-lightgray;
+    }
+}

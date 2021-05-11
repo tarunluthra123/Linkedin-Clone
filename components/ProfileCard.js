@@ -11,9 +11,11 @@ const ProfileCard = () => {
                 width="72px"
             />
             <div className="text-black h-32 pt-14 bg-gray-50">
-                <h6 className="font-bold text-lg text-center">Tarun Luthra</h6>
+                <h6 className="font-bold text-lg text-center">
+                    Jack Jack Parr
+                </h6>
                 <p className="text-gray-500 text-center text-sm">
-                    MERN Stack Developer
+                    Secret Superhero
                 </p>
             </div>
             <hr />
