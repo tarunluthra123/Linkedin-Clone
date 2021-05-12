@@ -10,8 +10,11 @@ import {
 } from "@heroicons/react/solid";
 import CreatePostButton from "./CreatePostButton";
 import Comment from "./Comment";
+import getUser from "../utils/getuser";
 
 const FeedPost = () => {
+    const user = getUser();
+
     return (
         <div className="flex flex-col bg-gray-50 w-30rem mx-10 rounded-md border-2 border-solid border-gray-200 my-3 p-5 h-auto">
             {/* User Info */}
@@ -74,9 +77,10 @@ const FeedPost = () => {
             {/* Add comment */}
             <span className="flex my-4">
                 <img
-                    src="/jackjack.jpeg"
+                    src={user.photoURL}
                     width="50px"
                     className="rounded-full"
+                    alt={user.displayName}
                 />
                 <input
                     type="text"

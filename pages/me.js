@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import LoadingPage from "../components/LoadingPage";
-import { useSelector } from "react-redux";
 import Header from "../components/Header";
+import getUser from "../utils/getuser";
 
 const Me = (props) => {
-    const user = useSelector((state) => state.auth.user);
+    const user = getUser();
     const router = useRouter();
 
     useEffect(() => {

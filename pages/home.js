@@ -6,10 +6,11 @@ import News from "../components/News";
 import FeedPost from "../components/FeedPost";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
-import LoadingPage from '../components/LoadingPage';
+import LoadingPage from "../components/LoadingPage";
+import getUser from "../utils/getuser";
 
 const Home = () => {
-    const user = useSelector((state) => state.auth.user);
+    const user = getUser();
     const router = useRouter();
 
     useEffect(() => {

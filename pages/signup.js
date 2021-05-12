@@ -33,7 +33,6 @@ const Signup = () => {
         }
 
         const { name, email, password } = credentials;
-        console.log({ credentials });
         if (name.length == 0) {
             setErrorMessage("Please provide a valid name");
             return false;
@@ -61,7 +60,6 @@ const Signup = () => {
         )
             .then(async (userCredentials) => {
                 const user = userCredentials.user;
-                console.log(user);
                 dispatch(login(user));
 
                 const currentUser = auth.currentUser;

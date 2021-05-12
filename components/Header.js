@@ -9,8 +9,11 @@ import {
 } from "@heroicons/react/solid";
 import HeaderItem from "./HeaderItem";
 import Link from "next/link";
+import getUser from "../utils/getuser";
 
 const Header = () => {
+    const user = getUser();
+
     return (
         <div className="h-20 bg-white flex justify-between px-8 sm:px-10 md:px-28 lg:px-36 2xl:px-60 z-10 fixed w-screen top-0">
             <div className="flex items-center justify-evenly min-w-10/100 ">
@@ -47,10 +50,11 @@ const Header = () => {
                 <HeaderItem Icon={BellIcon} title="Notification" />
                 <div className="group flex flex-col items-center cursor-pointer w-12 sm:w-20 text-gray-600">
                     <img
-                        src={"/jackjack.jpeg"}
+                        src={user.photoURL}
                         height="40"
                         width="40"
                         className="rounded-full"
+                        alt={user.displayName}
                     />
                     <p className="hidden lg:block tracking-widest text-xs">
                         Me

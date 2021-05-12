@@ -2,16 +2,18 @@ import React, { useState } from "react";
 import CredentialInputBox from "../components/CredentialInputBox";
 import Link from "next/link";
 import { auth, googleSignIn } from "../utils/firebase";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { login } from "../redux/auth";
 import Router from "next/router";
 import LoadingPage from "../components/LoadingPage";
+import { setCookie } from "nookies";
+import getUser from "../utils/getuser";
 
 const SignIn = (props) => {
     const [credentials, setCredentials] = useState({ email: "", password: "" });
     const [errorMessage, setErrorMessage] = useState(null);
     const dispatch = useDispatch();
-    const user = useSelector((state) => state.auth.user);
+    const user = getUser();
 
     if (user) {
         Router.push("/home");
@@ -32,6 +34,10 @@ const SignIn = (props) => {
                 const user = userCredential.user;
                 dispatch(login(user));
 
+                setCookie(null, "linkedin-user", JSON.stringify(user), {
+                    maxAge: 60 * 60,
+                });
+
                 Router.push("/home");
             })
             .catch((error) => {
@@ -45,6 +51,9 @@ const SignIn = (props) => {
                 const user = result.user;
 
                 dispatch(login(user));
+                setCookie(null, "linkedin-user", JSON.stringify(user), {
+                    maxAge: 60 * 60,
+                });
 
                 router.push("/home");
             })

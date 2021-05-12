@@ -1,10 +1,10 @@
 import Link from "next/link";
 import Router from "next/router";
-import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import getUser from "../utils/getuser";
 
 export default function Home() {
-    const user = useSelector((state) => state.auth.user);
+    const user = getUser();
 
     useEffect(() => {
         if (user) {

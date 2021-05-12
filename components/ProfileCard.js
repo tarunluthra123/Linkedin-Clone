@@ -1,21 +1,25 @@
 import React from "react";
+import getUser from "../utils/getuser";
 
 const ProfileCard = () => {
+    const user = getUser();
+
     return (
         <div className="flex-shrink-0 flex flex-col relative w-64 ml-1 rounded-md overflow-hidden border-2 border-solid border-gray-200 profile-card">
             <div className="h-12 bg-grayblue"></div>
             <img
-                src="/jackjack.jpeg"
+                src={user.photoURL}
                 className="rounded-full absolute top-5 left-24 border-2 border-white border-solid"
                 height="72px"
                 width="72px"
+                alt={user.displayName}
             />
             <div className="text-black h-32 pt-14 bg-gray-50">
                 <h6 className="font-bold text-lg text-center">
-                    Jack Jack Parr
+                    {user.displayName}
                 </h6>
                 <p className="text-gray-500 text-center text-sm">
-                    Secret Superhero
+                    {user.about || "Description here"}
                 </p>
             </div>
             <hr />
