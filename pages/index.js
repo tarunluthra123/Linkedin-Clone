@@ -1,6 +1,21 @@
 import Link from "next/link";
+import Router from "next/router";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 export default function Home() {
+    const user = useSelector((state) => state.auth.user);
+
+    useEffect(() => {
+        if (user) {
+            Router.push("/home");
+        }
+    }, [user]);
+
+    if (user) {
+        return <LoadingPage />;
+    }
+
     return (
         <div className="h-full w-full">
             <header className="bg-white flex justify-between px-4 py-3 items-center">
@@ -18,7 +33,7 @@ export default function Home() {
                     </Link>
 
                     <Link href="/signin">
-                        <button className="bg-white border border-blue-500 border-solid font-bold px-5 py-1 text-blue-500 rounded-full outline-none hover:bg-blue-100 transition-all transition-duration-100 hover:ring-1">
+                        <button className="bg-white border border-blue-500 border-solid font-bold px-5 py-1 text-blue-500 rounded-full outline-none hover:bg-blue-100 transition-all transition-duration-100 hover:ring-1 focus:outline-none focus:ring">
                             Sign in
                         </button>
                     </Link>

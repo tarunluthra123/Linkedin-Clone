@@ -6,6 +6,7 @@ import News from "../components/News";
 import FeedPost from "../components/FeedPost";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
+import LoadingPage from '../components/LoadingPage';
 
 const Home = () => {
     const user = useSelector((state) => state.auth.user);
@@ -18,7 +19,7 @@ const Home = () => {
     }, []);
 
     if (!user) {
-        return <div>Loading...</div>;
+        return <LoadingPage />;
     }
 
     return (

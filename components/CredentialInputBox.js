@@ -20,7 +20,7 @@ const CredentialInputBox = ({ title, type, onChange }) => {
                 }}
             />
             <label
-                for={title}
+                htmlFor={title}
                 className={
                     "cursor-none absolute transition-all transition-duration-100 ease-in-out left-4 " +
                     (hasContent ? "top-1 text-sm" : "top-4 text-base")
