@@ -1,11 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../components/Header";
 import ProfileCard from "../components/ProfileCard";
 import CreatePost from "../components/CreatePost";
 import News from "../components/News";
 import FeedPost from "../components/FeedPost";
+import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
 const Home = () => {
+    const user = useSelector((state) => state.auth.user);
+    const router = useRouter();
+
+    useEffect(() => {
+        if (!user) {
+            router.push("/signin");
+        }
+    }, []);
+
+    if (!user) {
+        return <div>Loading...</div>;
+    }
+
     return (
         <div className="h-screen w-full">
             <Header />

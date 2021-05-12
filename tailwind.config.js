@@ -13,7 +13,6 @@ module.exports = {
             "30vw": "30vw",
             "60/100": "60%",
             "70/100": "70%",
-            full: "100%",
         },
 
         extend: {
@@ -27,12 +26,19 @@ module.exports = {
             width: {
                 "30rem": "37rem",
             },
+            spacing: {
+                "10%": "10%",
+                "30%": "30%",
+                "40%": "40%",
+            },
         },
     },
     variants: {
         extend: {
             width: ["focus-within"],
             scale: ["focus-within", "focus"],
+            borderWidth: ["hover", "focus"],
+            ringWidth: ["hover", "active"],
         },
     },
     plugins: [],
