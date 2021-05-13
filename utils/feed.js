@@ -12,10 +12,10 @@ export function getFeed() {
         const feed = [];
         snapshot.forEach((doc) => {
             const data = doc.data();
+            console.log(data);
             feed.push({
                 ...data,
                 id: doc.id,
-                time: data.time.toJSON(),
             });
         });
 

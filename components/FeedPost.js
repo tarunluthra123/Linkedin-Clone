@@ -31,12 +31,16 @@ const FeedPost = ({ post }) => {
     }
 
     function getImage() {
-        storageRef
-            .child(photoRef)
-            .getDownloadURL()
-            .then((url) => {
-                setPhotoUrl(url);
-            });
+        try {
+            storageRef
+                .child(photoRef)
+                .getDownloadURL()
+                .then((url) => {
+                    setPhotoUrl(url);
+                });
+        } catch (e) {
+            console.error(e);
+        }
     }
 
     useEffect(() => {
@@ -52,8 +56,7 @@ const FeedPost = ({ post }) => {
             {/* User Info */}
             <span className="flex justify-around items-center">
                 <img
-                    src={"/jackjack.jpeg"}
-                    // TODO: get author photo
+                    src={author.photoURL}
                     height="50px"
                     width="50px"
                     className="rounded-full"

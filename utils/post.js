@@ -26,6 +26,7 @@ export default async function createPost(
         displayName: user.displayName,
         description: user.description || "",
         uid: user.uid,
+        photoURL: user.photoURL,
     };
 
     const time = new timestamp();
