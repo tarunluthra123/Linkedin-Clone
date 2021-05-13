@@ -55,7 +55,6 @@ const CreatePost = () => {
                     }}
                     onBlur={() => {
                         setInputSpanSelected(false);
-                        console.log(contentRef);
                     }}
                 ></span>
                 {!inputSpanSelected &&

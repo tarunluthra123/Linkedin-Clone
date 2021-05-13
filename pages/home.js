@@ -4,10 +4,10 @@ import ProfileCard from "../components/ProfileCard";
 import CreatePost from "../components/CreatePost";
 import News from "../components/News";
 import FeedPost from "../components/FeedPost";
-import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import LoadingPage from "../components/LoadingPage";
 import getUser from "../utils/getuser";
+import { getFeed } from "../utils/feed";
 
 const Home = () => {
     const user = getUser();
@@ -22,6 +22,9 @@ const Home = () => {
     if (!user) {
         return <LoadingPage />;
     }
+    if (user) {
+        var feed = getFeed();
+    }
 
     return (
         <div className="h-screen w-full">
@@ -33,9 +36,13 @@ const Home = () => {
                 </section>
 
                 {/* Feed */}
-                <section className="flex-shrink-0 order-3 xl:order-2">
+                <section className="flex-shrink-0 order-3 xl:order-2 xl:mt-0 mt-5">
                     <CreatePost />
-                    <FeedPost />
+                    {feed &&
+                        feed.length > 0 &&
+                        feed.map((post) => (
+                            <FeedPost key={post.id} post={post} />
+                        ))}
                 </section>
 
                 {/* News */}

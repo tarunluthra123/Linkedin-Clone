@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
     ChatAltIcon,
     ShareIcon,
@@ -11,37 +11,70 @@ import {
 import CreatePostButton from "./CreatePostButton";
 import Comment from "./Comment";
 import getUser from "../utils/getuser";
+import { storageRef } from "../utils/firebase";
 
-const FeedPost = () => {
+const FeedPost = ({ post }) => {
+    const { author, content, photoRef, time } = post;
     const user = getUser();
+    const [photoURL, setPhotoUrl] = useState(null);
+
+    function calculateTime() {
+        const now = new Date().valueOf() / 1000;
+        const diff = now - time.seconds;
+        let hours = diff / (60 * 60);
+        if (hours < 1) {
+            hours = "Less than 1";
+        } else {
+            hours = Math.floor(hours);
+        }
+        return hours + "h ago";
+    }
+
+    function getImage() {
+        storageRef
+            .child(photoRef)
+            .getDownloadURL()
+            .then((url) => {
+                setPhotoUrl(url);
+            });
+    }
+
+    useEffect(() => {
+        if (!photoURL) {
+            getImage();
+        }
+    });
+
+    const calculatedTimeDifference = calculateTime();
 
     return (
         <div className="flex flex-col bg-gray-50 w-30rem mx-10 rounded-md border-2 border-solid border-gray-200 my-3 p-5 h-auto">
             {/* User Info */}
             <span className="flex justify-around items-center">
                 <img
-                    src="/jackjack.jpeg"
+                    src={"/jackjack.jpeg"}
+                    // TODO: get author photo
                     height="50px"
                     width="50px"
                     className="rounded-full"
                 />
                 <span className="w-11/12 ml-3">
                     <h6 className="text-base font-bold text-black">
-                        Jack Jack Parr
+                        {author.displayName}
                     </h6>
                     <p className="truncate text-sm text-gray-500">
-                        Baby | Part time superhero
+                        {author.description || "LinkedIn user"}
                     </p>
-                    <span className="text-sm text-gray-500">2h</span>
+                    <span className="text-sm text-gray-500">
+                        {calculatedTimeDifference}
+                    </span>
                 </span>
             </span>
 
             {/* Content */}
             <span className="text-black text-base">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
-                dignissimos molestias alias temporibus qui numquam? Harum saepe
-                sed, commodi aliquid praesentium placeat id aperiam eius tempora
-                odio cum nemo culpa?
+                {content}
+                <img src={photoURL} className="w-8/12 m-4" />
             </span>
 
             {/* Like and comment values */}
