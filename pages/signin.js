@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CredentialInputBox from "../components/CredentialInputBox";
 import Link from "next/link";
 import { auth, googleSignIn } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { login } from "../redux/auth";
-import Router from "next/router";
+import { useRouter } from "next/router";
 import LoadingPage from "../components/LoadingPage";
 import { setCookie } from "nookies";
 import getUser from "../utils/getuser";
@@ -14,9 +14,15 @@ const SignIn = (props) => {
     const [errorMessage, setErrorMessage] = useState(null);
     const dispatch = useDispatch();
     const user = getUser();
+    const router = useRouter();
+
+    useEffect(() => {
+        if (user) {
+            router.push("/home");
+        }
+    });
 
     if (user) {
-        Router.push("/home");
         return <LoadingPage />;
     }
 

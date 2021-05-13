@@ -2,6 +2,7 @@ import Link from "next/link";
 import Router from "next/router";
 import { useEffect } from "react";
 import getUser from "../utils/getuser";
+import LoadingPage from "../components/LoadingPage";
 
 export default function Home() {
     const user = getUser();

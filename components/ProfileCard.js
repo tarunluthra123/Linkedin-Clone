@@ -9,7 +9,7 @@ const ProfileCard = () => {
             <div className="h-12 bg-grayblue"></div>
             <img
                 src={user.photoURL}
-                className="rounded-full absolute top-5 left-24 border-2 border-white border-solid"
+                className="rounded-full absolute top-5 left-20 ml-2 border-2 border-white border-solid"
                 height="72px"
                 width="72px"
                 alt={user.displayName}
