@@ -21,8 +21,7 @@ const Home = () => {
 
     if (!user) {
         return <LoadingPage />;
-    }
-    if (user) {
+    } else {
         var feed = getFeed();
     }
 

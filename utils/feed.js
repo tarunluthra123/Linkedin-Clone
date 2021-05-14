@@ -15,11 +15,13 @@ export function getFeed() {
             const feed = [];
             snapshot.forEach((doc) => {
                 const data = doc.data();
-                feed.push({
-                    ...data,
-                    id: doc.id,
-                    time: data.time.toJSON(),
-                });
+                if (data && data.time) {
+                    feed.push({
+                        ...data,
+                        id: doc.id,
+                        time: data.time.toJSON(),
+                    });
+                }
             });
             if (feedposts.length != feed.length) dispatch(setFeed(feed));
         });

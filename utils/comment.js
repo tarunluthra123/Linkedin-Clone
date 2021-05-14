@@ -10,7 +10,6 @@ export default async function addComment({
     pid,
     prevComments,
 }) {
-    console.log({ author, content, pid, prevComments });
     const feedpostRef = db.collection("feedposts").doc(pid);
     const newComment = JSON.stringify({
         author,

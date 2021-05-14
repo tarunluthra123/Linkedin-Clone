@@ -2,7 +2,6 @@ import React from "react";
 
 const Comment = ({ comment }) => {
     const { author, content } = comment;
-    console.log(comment);
     return (
         <div className="flex">
             <img

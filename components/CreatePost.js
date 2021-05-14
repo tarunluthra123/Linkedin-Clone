@@ -27,6 +27,7 @@ const CreatePost = () => {
 
         contentRef.current.innerText = "";
         setPhotoFile(null);
+        fileRef.current.value = null;
     }
 
     function onPhotoUpload(event) {
@@ -76,7 +77,9 @@ const CreatePost = () => {
                     title={"Photo"}
                     Icon={PhotographIcon}
                     color="text-blue-300"
-                    onClick={() => fileRef?.current.click()}
+                    onClick={() => {
+                        fileRef?.current.click();
+                    }}
                 />
                 <CreatePostButton
                     title={"Video"}

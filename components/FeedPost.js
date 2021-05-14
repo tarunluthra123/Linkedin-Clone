@@ -50,7 +50,7 @@ const FeedPost = ({ post }) => {
     }
 
     useEffect(() => {
-        if (photoURL) {
+        if (photoRef) {
             getImage();
         }
     });
