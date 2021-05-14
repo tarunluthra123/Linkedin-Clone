@@ -4,23 +4,27 @@ import { setFeed } from "../redux/feed";
 
 export function getFeed() {
     const dispatch = useDispatch();
-    const feed = useSelector((state) => state.feed.posts);
+    const feedposts = useSelector((state) => state.feed.posts);
 
-    if (feed.length > 0) return feed;
+    if (feedposts.length > 0) return feedposts;
 
-    db.collection("feedposts").onSnapshot((snapshot) => {
-        const feed = [];
-        snapshot.forEach((doc) => {
-            const data = doc.data();
-            console.log(data);
-            feed.push({
-                ...data,
-                id: doc.id,
+    const unsubscribe = db
+        .collection("feedposts")
+        .orderBy("time", "desc")
+        .onSnapshot((snapshot) => {
+            const feed = [];
+            snapshot.forEach((doc) => {
+                const data = doc.data();
+                feed.push({
+                    ...data,
+                    id: doc.id,
+                    time: data.time.toJSON(),
+                });
             });
+            if (feedposts.length != feed.length) dispatch(setFeed(feed));
         });
 
-        dispatch(setFeed(feed));
-    });
+    // unsubscribe();
 
     return [];
 }

@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
     ChatAltIcon,
     ShareIcon,
     ThumbUpIcon as ThumbUpIconOutline,
 } from "@heroicons/react/outline";
 import {
+    ArrowCircleRightIcon,
     LightBulbIcon,
     ThumbUpIcon as ThumbUpIconSolid,
 } from "@heroicons/react/solid";
@@ -12,22 +13,27 @@ import CreatePostButton from "./CreatePostButton";
 import Comment from "./Comment";
 import getUser from "../utils/getuser";
 import { storageRef } from "../utils/firebase";
+import addComment from "../utils/comment";
 
 const FeedPost = ({ post }) => {
-    const { author, content, photoRef, time } = post;
+    const { author, content, photoRef, time, comments } = post;
     const user = getUser();
     const [photoURL, setPhotoUrl] = useState(null);
+    const commentRef = useRef(null);
 
     function calculateTime() {
-        const now = new Date().valueOf() / 1000;
-        const diff = now - time.seconds;
-        let hours = diff / (60 * 60);
-        if (hours < 1) {
-            hours = "Less than 1";
-        } else {
-            hours = Math.floor(hours);
+        if (time && time.seconds) {
+            const now = new Date().valueOf() / 1000;
+            const diff = now - time.seconds;
+            let hours = diff / (60 * 60);
+            if (hours < 1) {
+                hours = "Less than 1";
+            } else {
+                hours = Math.floor(hours);
+            }
+            return hours + "h ago";
         }
-        return hours + "h ago";
+        return "Just now";
     }
 
     function getImage() {
@@ -44,10 +50,30 @@ const FeedPost = ({ post }) => {
     }
 
     useEffect(() => {
-        if (!photoURL) {
+        if (photoURL) {
             getImage();
         }
     });
+
+    function createComment() {
+        const content = commentRef?.current?.value;
+        commentRef.current.value = "";
+
+        const author = {
+            uid: user.uid,
+            photoURL: user.photoURL,
+            displayName: user.displayName,
+            description: user.description || "LinkedIn User",
+        };
+        const comment = {
+            content,
+            author,
+            pid: post.id,
+            prevComments: comments || [],
+        };
+
+        addComment(comment);
+    }
 
     const calculatedTimeDifference = calculateTime();
 
@@ -118,23 +144,36 @@ const FeedPost = ({ post }) => {
                     className="rounded-full"
                     alt={user.displayName}
                 />
-                <input
+                <textarea
                     type="text"
-                    className="rounded-full border-2 border-solid border-gray-500 px-6 py-3 w-11/12 ml-3 outline-none"
+                    className="rounded-full border-2 border-solid border-gray-500 px-6 py-3 w-11/12 ml-3 outline-none resize h-14"
                     placeholder="Add a comment..."
+                    row="1"
+                    ref={commentRef}
                 />
+                <button
+                    onClick={createComment}
+                    className="outline-none focus:outline-none focus:bg-blue-300"
+                >
+                    <ArrowCircleRightIcon className="text-blue-400 h-12 mx-2" />
+                </button>
             </span>
 
             {/* Comments Section */}
-            <Comment
-                author={{
-                    name: "Monkey D. Luffy",
-                    photoUrl: "/luffy.jpg",
-                    about: "Mugiwara",
-                }}
-                content={`
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos enim iure laboriosam eum, veritatis similique minus consectetur blanditiis vero suscipit totam sunt est molestias perspiciatis pariatur maxime. Rerum nisi, aut doloremque at excepturi impedit reprehenderit perferendis sit reiciendis. Itaque, sequi?`}
-            />
+            {comments &&
+                comments.length > 0 &&
+                comments
+                    .slice()
+                    .reverse()
+                    .map((comment) => {
+                        const parsedComment = JSON.parse(comment);
+                        return (
+                            <Comment
+                                key={parsedComment.id}
+                                comment={parsedComment}
+                            />
+                        );
+                    })}
         </div>
     );
 };
