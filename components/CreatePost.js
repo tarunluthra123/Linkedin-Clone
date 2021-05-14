@@ -36,7 +36,7 @@ const CreatePost = () => {
 
     return (
         <div className="bg-gray-50 w-30rem min-h-36 mx-10 rounded-md border-2 border-solid border-gray-200">
-            <div className="flex justify-around items-center h-1/2 w-full py-8 px-5 text-gray-700 relative">
+            <div className="flex justify-around items-center h-1/2 w-full p-8 px-5 text-gray-700 relative">
                 <img
                     src={user.photoURL}
                     height="50px"
@@ -112,7 +112,7 @@ const CreatePost = () => {
                     </div>
                 )}
                 <button
-                    className="bg-blue-500 text-white text-base font-bold rounded-md px-4 py-2 hover:text-blue-500 hover:bg-blue-50 border-2 border-solid border-blue-500"
+                    className="bg-blue-500 text-white text-base font-bold rounded-md  p-2 px-4 hover:text-blue-500 hover:bg-blue-50 border-2 border-solid border-blue-500"
                     onClick={submitPost}
                 >
                     Create Post

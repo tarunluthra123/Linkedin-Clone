@@ -153,9 +153,9 @@ const FeedPost = ({ post }) => {
                 />
                 <button
                     onClick={createComment}
-                    className="outline-none focus:outline-none focus:bg-blue-300"
+                    className="outline-none focus:outline-none"
                 >
-                    <ArrowCircleRightIcon className="text-blue-400 h-12 mx-2" />
+                    <ArrowCircleRightIcon className="text-blue-500 h-12 mx-2" />
                 </button>
             </span>
 

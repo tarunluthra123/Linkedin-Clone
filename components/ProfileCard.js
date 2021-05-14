@@ -7,19 +7,21 @@ const ProfileCard = () => {
     return (
         <div className="flex-shrink-0 flex flex-col relative w-64 ml-1 rounded-md overflow-hidden border-2 border-solid border-gray-200 profile-card">
             <div className="h-12 bg-grayblue"></div>
-            <img
-                src={user.photoURL}
-                className="rounded-full absolute top-5 left-20 ml-2 border-2 border-white border-solid"
-                height="72px"
-                width="72px"
-                alt={user.displayName}
-            />
+            <span className="absolute flex items-center justify-center mt-5 center w-full h-auto">
+                <img
+                    src={user.photoURL}
+                    className="rounded-full border-2 border-white border-solid"
+                    height="72px"
+                    width="72px"
+                    alt={user.displayName}
+                />
+            </span>
             <div className="text-black h-32 pt-14 bg-gray-50">
                 <h6 className="font-bold text-lg text-center">
                     {user.displayName}
                 </h6>
                 <p className="text-gray-500 text-center text-sm">
-                    {user.about || "Description here"}
+                    {user.about || "LinkedIn User"}
                 </p>
             </div>
             <hr />
