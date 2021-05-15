@@ -93,7 +93,7 @@ const Signup = () => {
         <div className="pt-32 px-28 lg:px-40 xl:px-60 2xl:px-30%">
             <Link href="/">
                 <img
-                    src="/blue-linkedin-logo.png"
+                    src="/linkedin_logo_blue.png"
                     className="h-10 mx-auto cursor-pointer"
                 />
             </Link>

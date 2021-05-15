@@ -2,14 +2,8 @@ import { db } from "./firebase";
 import { useSelector, useDispatch } from "react-redux";
 import { setFeed } from "../redux/feed";
 
-export function getFeed() {
-    const dispatch = useDispatch();
-    const feedposts = useSelector((state) => state.feed.posts);
-
-    if (feedposts.length > 0) return feedposts;
-
-    const unsubscribe = db
-        .collection("feedposts")
+export function getFeed(dispatch) {
+    db.collection("feedposts")
         .orderBy("time", "desc")
         .onSnapshot((snapshot) => {
             const feed = [];
@@ -23,10 +17,6 @@ export function getFeed() {
                     });
                 }
             });
-            if (feedposts.length != feed.length) dispatch(setFeed(feed));
+            dispatch(setFeed(feed));
         });
-
-    // unsubscribe();
-
-    return [];
 }

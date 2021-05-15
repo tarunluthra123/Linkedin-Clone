@@ -72,7 +72,7 @@ const SignIn = (props) => {
         <div className="mx-32 md:mx-40 my-44 lg:px-40 xl:px-60 2xl:px-96">
             <Link href="/">
                 <img
-                    src="/blue-linkedin-logo.png"
+                    src="/linkedin_logo_blue.png"
                     alt="Linkedin"
                     height="20px"
                     className="h-8 mb-3 cursor-pointer"

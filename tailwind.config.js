@@ -19,6 +19,8 @@ module.exports = {
             colors: {
                 lightgray: "#f3f2ef",
                 grayblue: "#a0b4b7",
+                linkedinblue: "#4180cc",
+                darkerblue: "#3E7DC9",
             },
             inset: {
                 auto: "auto",
@@ -28,6 +30,8 @@ module.exports = {
             },
             spacing: {
                 "10%": "10%",
+                "20%": "20%",
+                "25%": "25%",
                 "30%": "30%",
                 "40%": "40%",
             },

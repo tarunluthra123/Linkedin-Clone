@@ -8,21 +8,24 @@ import { useRouter } from "next/router";
 import LoadingPage from "../components/LoadingPage";
 import getUser from "../utils/getuser";
 import { getFeed } from "../utils/feed";
+import { useDispatch, useSelector } from "react-redux";
 
 const Home = () => {
     const user = getUser();
     const router = useRouter();
+    const feed = useSelector((state) => state.feed.posts);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if (!user) {
             router.push("/signin");
+        } else {
+            getFeed(dispatch);
         }
     }, []);
 
     if (!user) {
         return <LoadingPage />;
-    } else {
-        var feed = getFeed();
     }
 
     return (
