@@ -7,7 +7,7 @@ import { login } from "../redux/auth";
 import { useRouter } from "next/router";
 import LoadingPage from "../components/LoadingPage";
 import { setCookie } from "nookies";
-import getUser from "../utils/getuser";
+import {getUser} from "../utils/getuser";
 
 const SignIn = (props) => {
     const [credentials, setCredentials] = useState({ email: "", password: "" });

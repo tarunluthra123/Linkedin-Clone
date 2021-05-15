@@ -6,7 +6,7 @@ import {
     CalendarIcon,
     PaperClipIcon,
 } from "@heroicons/react/outline";
-import getUser from "../utils/getuser";
+import { getUser } from "../utils/getuser";
 import createPost from "../utils/post";
 
 const CreatePost = () => {

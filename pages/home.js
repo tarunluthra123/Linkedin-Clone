@@ -6,7 +6,7 @@ import News from "../components/News";
 import FeedPost from "../components/FeedPost";
 import { useRouter } from "next/router";
 import LoadingPage from "../components/LoadingPage";
-import getUser from "../utils/getuser";
+import{getUser} from "../utils/getuser";
 import { getFeed } from "../utils/feed";
 import { useDispatch, useSelector } from "react-redux";
 

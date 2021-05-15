@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import {
     ChatAltIcon,
     ShareIcon,
@@ -11,7 +11,7 @@ import {
 } from "@heroicons/react/solid";
 import CreatePostButton from "./CreatePostButton";
 import Comment from "./Comment";
-import getUser from "../utils/getuser";
+import { getUser } from "../utils/getuser";
 import { storageRef } from "../utils/firebase";
 import addComment from "../utils/comment";
 

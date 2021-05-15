@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import LoadingPage from "../components/LoadingPage";
 import Header from "../components/Header";
-import getUser from "../utils/getuser";
+import {getUser}from "../utils/getuser";
 
 const Me = (props) => {
     const user = getUser();

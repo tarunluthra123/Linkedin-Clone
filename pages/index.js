@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Router from "next/router";
 import { useEffect } from "react";
-import getUser from "../utils/getuser";
+import { getUser } from "../utils/getuser";
 import LoadingPage from "../components/LoadingPage";
 
 export default function Home() {
@@ -151,7 +151,10 @@ export default function Home() {
                         "Careers",
                         "Developers",
                     ].map((item) => (
-                        <span className="text-gray-500 font-bold text-sm hover:text-linkedinblue hover:underline cursor-pointer">
+                        <span
+                            key={item}
+                            className="text-gray-500 font-bold text-sm hover:text-linkedinblue hover:underline cursor-pointer"
+                        >
                             {item}
                         </span>
                     ))}
@@ -162,7 +165,10 @@ export default function Home() {
                     </h5>
                     {["Learning", "Jobs", "Salary", "Mobile", "Services"].map(
                         (item) => (
-                            <span className="text-gray-500 font-bold text-sm hover:text-linkedinblue hover:underline cursor-pointer">
+                            <span
+                                key={item}
+                                className="text-gray-500 font-bold text-sm hover:text-linkedinblue hover:underline cursor-pointer"
+                            >
                                 {item}
                             </span>
                         )
@@ -174,7 +180,10 @@ export default function Home() {
                     </h5>
                     {["Talent", "Marketing", "Sales", "Learning"].map(
                         (item) => (
-                            <span className="text-gray-500 font-bold text-sm hover:text-linkedinblue hover:underline cursor-pointer">
+                            <span
+                                key={item}
+                                className="text-gray-500 font-bold text-sm hover:text-linkedinblue hover:underline cursor-pointer"
+                            >
                                 {item}
                             </span>
                         )
@@ -199,7 +208,10 @@ export default function Home() {
                         "Services",
                         "Interview Prep",
                     ].map((item) => (
-                        <span className="text-gray-500 font-bold text-sm hover:text-linkedinblue hover:underline cursor-pointer">
+                        <span
+                            key={item}
+                            className="text-gray-500 font-bold text-sm hover:text-linkedinblue hover:underline cursor-pointer"
+                        >
                             {item}
                         </span>
                     ))}

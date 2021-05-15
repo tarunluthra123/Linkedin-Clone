@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import {
     SearchIcon,
     HomeIcon,
@@ -9,10 +9,20 @@ import {
 } from "@heroicons/react/solid";
 import HeaderItem from "./HeaderItem";
 import Link from "next/link";
-import getUser from "../utils/getuser";
+import { getUser, logoutUser } from "../utils/getuser";
+import Router from "next/router";
+import { useDispatch } from "react-redux";
 
 const Header = () => {
     const user = getUser();
+    const [signOutUserBoxOpen, setSignOutUserBoxOpen] = useState(false);
+    const dispatch = useDispatch();
+
+    function signOut() {
+        logoutUser(dispatch);
+
+        Router.push("/");
+    }
 
     return (
         <div className="h-20 bg-white flex justify-between px-8 sm:px-10 md:px-28 lg:px-36 2xl:px-60 z-10 fixed w-screen top-0">
@@ -48,7 +58,12 @@ const Header = () => {
                 <HeaderItem Icon={BriefcaseIcon} title="Jobs" />
                 <HeaderItem Icon={ChatIcon} title="Messaging" />
                 <HeaderItem Icon={BellIcon} title="Notification" />
-                <div className="group flex flex-col items-center cursor-pointer w-12 sm:w-20 text-gray-600">
+                <div
+                    className="group flex flex-col items-center cursor-pointer w-12 sm:w-20 text-gray-600 relative"
+                    onClick={() => {
+                        setSignOutUserBoxOpen((prev) => !prev);
+                    }}
+                >
                     <img
                         src={user.photoURL}
                         height="40"
@@ -59,6 +74,19 @@ const Header = () => {
                     <p className="hidden lg:block tracking-widest text-xs">
                         Me
                     </p>
+                    <div
+                        className={
+                            "absolute bg-white w-auto h-auto top-16 border-2 border-solid border-gray-500 rounded-lg" +
+                            (signOutUserBoxOpen ? " block" : " hidden")
+                        }
+                    >
+                        <button
+                            className="text-black font-bold px-2 w-24 text-lg text-center rounded-lg"
+                            onClick={signOut}
+                        >
+                            Sign out
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

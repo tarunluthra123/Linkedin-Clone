@@ -1,5 +1,5 @@
 import React from "react";
-import getUser from "../utils/getuser";
+import { getUser } from "../utils/getuser";
 
 const ProfileCard = () => {
     const user = getUser();

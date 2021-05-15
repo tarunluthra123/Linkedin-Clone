@@ -1,8 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
-import { parseCookies } from "nookies";
-import { login } from "../redux/auth";
+import { parseCookies, destroyCookie } from "nookies";
+import { login, logout } from "../redux/auth";
 
-export default function getUser() {
+export function getUser() {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.auth.user);
 
@@ -19,4 +19,10 @@ export default function getUser() {
     }
 
     return null;
+}
+
+export function logoutUser(dispatch) {
+    destroyCookie(null, "linkedin-user");
+
+    dispatch(logout());
 }
