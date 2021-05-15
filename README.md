@@ -1,34 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# LinkedIn Clone
 
-## Getting Started
+A fully functional web responsive [LinkedIn](https://www.linkedin.com/) clone with realtime updates and interactive features.
 
-First, run the development server:
+The build uses :
 
-```bash
+1. [Next.js](https://nextjs.org/)
+2. [Tailwind CSS](https://tailwindcss.com/)
+3. [React Redux](https://react-redux.js.org/)
+4. [Firebase](https://firebase.google.com/)
+
+The build can viewed live on this link - [Live Demo](linkedin-clone-livid.vercel.app)
+
+### Screenshots
+
+![](./screenshots/landing.png)
+![](./screenshots/signin.png)
+![](./screenshots/feed1.png)
+![](./screenshots/feed2.png)
+![](./screenshots/feed3.png)
+
+### Running locally
+
+To run this project locally, follow these instructions
+
+1. Clone this project
+
+```sh
+git clone git@github.com:tarunluthra123/Linkedin-Clone.git
+```
+
+2. Install the dependencies
+
+```sh
+npm install
+# or
+yarn
+```
+
+3. Setup **Firebase**.
+   Go to https://firebase.google.com/ and create a new project.
+
+4. Setup **.env** file
+   Copy the API_KEY and other related authentication details required to connect this application to your Firebase App and paste them in a .env file which must be created in the root folder. Refer to '/utils/firebase.js/' for the exact structure.
+
+5. Run the Next development server
+
+```sh
 npm run dev
 # or
 yarn dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
