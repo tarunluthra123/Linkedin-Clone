@@ -38,7 +38,7 @@ const CreatePost = () => {
         <div className="bg-gray-50 w-30rem min-h-36 mx-10 rounded-md border-2 border-solid border-gray-200">
             <div className="flex justify-around items-center h-1/2 w-full p-8 px-5 text-gray-700 relative">
                 <img
-                    src={user.photoURL}
+                    src={user.photoURL || "/user_avatar.png"}
                     height="50px"
                     width="50px"
                     className="rounded-full"

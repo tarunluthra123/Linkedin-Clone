@@ -82,7 +82,7 @@ const FeedPost = ({ post }) => {
             {/* User Info */}
             <span className="flex justify-around items-center">
                 <img
-                    src={author.photoURL}
+                    src={author.photoURL || "/user_avatar.png"}
                     height="50px"
                     width="50px"
                     className="rounded-full"
@@ -137,11 +137,12 @@ const FeedPost = ({ post }) => {
             </span>
 
             {/* Add comment */}
-            <span className="flex my-4">
+            <span className="flex my-4 items-center">
                 <img
-                    src={user.photoURL}
+                    src={user.photoURL || "/user_avatar.png"}
+                    height="50px"
                     width="50px"
-                    className="rounded-full"
+                    className="rounded-full h-12"
                     alt={user.displayName}
                 />
                 <textarea

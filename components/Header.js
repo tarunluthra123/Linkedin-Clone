@@ -65,7 +65,7 @@ const Header = () => {
                     }}
                 >
                     <img
-                        src={user.photoURL}
+                        src={user.photoURL || "/user_avatar.png"}
                         height="40"
                         width="40"
                         className="rounded-full"

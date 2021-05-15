@@ -9,7 +9,7 @@ const ProfileCard = () => {
             <div className="h-12 bg-grayblue"></div>
             <span className="absolute flex items-center justify-center mt-5 center w-full h-auto">
                 <img
-                    src={user.photoURL}
+                    src={user.photoURL || "/user_avatar.png"}
                     className="rounded-full border-2 border-white border-solid"
                     height="72px"
                     width="72px"

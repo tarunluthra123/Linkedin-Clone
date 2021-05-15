@@ -5,7 +5,7 @@ const Comment = ({ comment }) => {
     return (
         <div className="flex">
             <img
-                src={author.photoURL}
+                src={author.photoURL || "/user_avatar.png"}
                 alt={author.displayName}
                 height="50px"
                 width="50px"
