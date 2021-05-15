@@ -1,14 +1,13 @@
 import firebase from "firebase";
 import "firebase/storage";
-import "firebase/database";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDkivpQszJqjrlLNIVj3Og3uPA7hOAOspI",
-    authDomain: "linkedin-clone-8266f.firebaseapp.com",
-    projectId: "linkedin-clone-8266f",
-    storageBucket: "linkedin-clone-8266f.appspot.com",
-    messagingSenderId: "923249803060",
-    appId: "1:923249803060:web:0bb02a96ce8d9c57ac2f61",
+    apiKey: process.env.NEXT_PUBLIC_API_KEY,
+    authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN,
+    projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
+    storageBucket: process.env.NEXT_PUBLIC_STORAGE_BUCKET,
+    messagingSenderID: process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID,
+    appId: process.env.NEXT_PUBLIC_APP_ID,
 };
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
