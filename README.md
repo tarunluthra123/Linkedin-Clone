@@ -9,7 +9,7 @@ The build uses :
 3. [React Redux](https://react-redux.js.org/)
 4. [Firebase](https://firebase.google.com/)
 
-The build can viewed live on this link - [Live Demo](linkedin-clone-livid.vercel.app)
+The build can viewed live on this link - [Live Demo](https://linkedin-clone-livid.vercel.app/)
 
 ### Screenshots
 
