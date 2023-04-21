@@ -19,7 +19,7 @@ const FeedPost = ({ post }) => {
 	const { author, content, photoRef, time, comments } = post;
 	const user = getUser();
 	const [photoURL, setPhotoUrl] = useState(null);
-	const commentRef = useRef(null);
+	const [text, setText] = useState("");
 
 	function calculateTime() {
 		if (time && time.seconds) {
@@ -65,9 +65,6 @@ const FeedPost = ({ post }) => {
 	});
 
 	function createComment() {
-		const content = commentRef?.current?.value;
-		commentRef.current.value = "";
-
 		const author = {
 			uid: user.uid,
 			photoURL: user.photoURL,
@@ -75,11 +72,13 @@ const FeedPost = ({ post }) => {
 			description: user.description || "LinkedIn User",
 		};
 		const comment = {
-			content,
+			content: text,
 			author,
 			pid: post.id,
 			prevComments: comments || [],
 		};
+
+		setText('')
 
 		addComment(comment);
 	}
@@ -159,14 +158,15 @@ const FeedPost = ({ post }) => {
 					className="rounded-full border-2 border-solid border-gray-500 px-6 py-3 w-11/12 ml-3 outline-none resize h-14"
 					placeholder="Add a comment..."
 					row="1"
-					ref={commentRef}
+					value={text}
+					onChange={(e) => setText(e.target.value)}
 				/>
-				<button
+				{text.length > 0 && <button
 					onClick={createComment}
 					className="outline-none focus:outline-none"
 				>
 					<ArrowCircleRightIcon className="text-blue-500 h-12 mx-2" />
-				</button>
+				</button>}
 			</span>
 
 			{/* Comments Section */}
