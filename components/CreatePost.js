@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import CreatePostButton from "./CreatePostButton";
 import { PhotographIcon, PlayIcon, XIcon } from "@heroicons/react/solid";
 import {
@@ -15,6 +15,23 @@ const CreatePost = () => {
     const contentRef = useRef();
     const [photoFile, setPhotoFile] = useState(null);
     const [inputSpanSelected, setInputSpanSelected] = useState(false);
+    const [showButton, setShowButton] = useState(false);
+
+    useEffect(() => {
+        const handler = (e) => {
+            if (e.target.innerText.length > 0) {
+                setShowButton(true);
+            } else {
+                setShowButton(false);
+            }
+        };
+
+        contentRef?.current?.addEventListener("input", handler);
+
+        return () => {
+            contentRef?.current?.removeEventListener("input", handler);
+        }
+    }, []);
 
     function submitPost() {
         const content = contentRef?.current?.innerText;
@@ -111,12 +128,12 @@ const CreatePost = () => {
                         />
                     </div>
                 )}
-                <button
+                {showButton && <button
                     className="bg-blue-500 text-white text-base font-bold rounded-md  p-2 px-4 hover:text-blue-500 hover:bg-blue-50 border-2 border-solid border-blue-500"
                     onClick={submitPost}
                 >
                     Create Post
-                </button>
+                </button>}
             </div>
         </div>
     );
