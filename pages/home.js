@@ -19,10 +19,10 @@ const Home = () => {
 	useEffect(() => {
 		if (!user) {
 			router.push("/signin");
-		} else {
-			getFeed(dispatch);
 		}
-	}, []);
+
+		getFeed(dispatch);
+	}, [user]);
 
 	if (!user) {
 		return <LoadingPage />;

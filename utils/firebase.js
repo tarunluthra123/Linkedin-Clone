@@ -10,11 +10,19 @@ const firebaseConfig = {
     appId: process.env.NEXT_PUBLIC_APP_ID,
 };
 
-const firebaseApp = firebase.initializeApp(firebaseConfig);
+let firebaseApp;
+
+if (!firebase.apps.length) {
+    firebaseApp = firebase.initializeApp(firebaseConfig);
+} else {
+    firebaseApp = firebase.app(); // if already initialized, use that one
+}
+
 export const db = firebaseApp.firestore();
 export const auth = firebaseApp.auth();
 export const storage = firebase.storage();
 export const storageRef = storage.ref();
+
 export const timestamp = firebase.firestore.FieldValue.serverTimestamp;
 
 export const googleAuthProvider = new firebase.auth.GoogleAuthProvider();

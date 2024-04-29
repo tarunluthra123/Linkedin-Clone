@@ -38,8 +38,6 @@ const FeedPost = ({ post }) => {
 			const days = Math.floor(hours / 24);
 			if (days == 1) return "1 day ago";
 
-			console.log({ days, hours });
-
 			return days + " days ago";
 		}
 		return "Just now";
